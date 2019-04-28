@@ -1,0 +1,55 @@
+//this file include plugin that need to be seperately installed like
+1: YouCompleteMe
+2: Emmet
+
+plugin manager that is used is Vundle so all the plugin files should be stored in .vim/bundle
+it also contains the vim configuration file that comes with variety of preinstalled plugins
+clone this :https://github.com/Abskpro/vimrc.git
+
+ set nocompatible              " be iMproved, required
+  filetype off                  " required
+
+  " set the runtime path to include Vundle and initialize
+  set rtp+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
+  " " alternatively, pass a path where Vundle should install plugins
+  " "call vundle#begin('~/some/path/here')
+  "
+  " " let Vundle manage Vundle, required
+  Plugin 'VundleVim/Vundle.vim'
+  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'Yggdroot/indentLine'
+  Plugin 'mattn/emmet-vim'
+
+  let g:ycm_use_clangd = 0
+  " " All of your Plugins must be added before the following line
+  call vundle#end()            " required
+  filetype plugin indent on    " required
+  " " To ignore plugin indent changes, instead use:
+  " "filetype plugin on
+  " "
+ let g:ycm_autoclose_preview_window_after_insertion = 1
+ let g:ycm_autoclose_preview_window_after_completion = 1
+ imap jj <ESC>
+ set tabstop=4
+ set cursorline
+ let g:indentLine_color_term = 239                                                                       
+ let g:indentLine_char_list = ['|', '¦', '?', '?']
+ let g:indentLine_concealcursor = 'inc'
+ let g:indentLine_conceallevel = 2
+ let g:indentLine_enabled = 0
+ let g:user_emmet_install_global = 0
+ autocmd FileType html,css EmmetInstall
+
+
+
+ set runtimepath+=~/.vim_runtime
+ source ~/.vim_runtime/vimrcs/basic.vim
+ source ~/.vim_runtime/vimrcs/filetypes.vim
+ source ~/.vim_runtime/vimrcs/plugins_config.vim
+ source ~/.vim_runtime/vimrcs/extended.vim
+
+try
+ source ~/.vim_runtime/my_configs.vim
+ catch
+ endtry   
