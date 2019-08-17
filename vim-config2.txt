@@ -1,0 +1,50 @@
+set nocompatible              " be iMproved, required
+ filetype off                  " required
+ filetype plugin on
+ " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    " alternatively, pass a path where Vundle should install plugins
+    "call vundle#begin('~/some/path/here')
+    " " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'Valloric/YouCompleteMe'
+    Plugin 'Yggdroot/indentLine'
+    Plugin 'mattn/emmet-vim'
+    Plugin 'wikitopian/hardmode'
+    Plugin 'digitaltoad/vim-pug'
+    Plugin 'pangloss/vim-javascript'
+    let g:ycm_use_clangd = 0
+    " " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+    " " To ignore plugin indent changes, instead use:
+    " "filetype plugin on
+    let g:ycm_autoclose_preview_window_after_insertion = 1
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    imap jj <ESC>
+    set tabstop=4
+    set cursorline
+    set relativenumber
+    set number
+    set showmatch
+    set showcmd
+    syntax on
+    let g:indentLine_color_term = 239
+    let g:indentLine_char_list = ['|', '|', '?', '?']
+    let g:indentLine_concealcursor = 'inc'
+    let g:indentLine_conceallevel = 2
+    let g:indentLine_enabled = 0
+    let g:user_emmet_install_global = 0
+    "" for eslint (ALE)
+    let b:ale_fixers = ['prettier', 'eslint']
+    let g:ale_fix_on_save = 1
+    let g:ale_completion_enabled = 1
+    "" for js
+    let g:javascript_plugin_jsdoc = 1
+    let g:javascript_plugin_ngdoc = 1
+    let g:javascript_plugin_flow = 1
+    "" for html
+    iabbrev </ </<C-X><C-O>
+    "" emmet config
+    autocmd FileType html,css EmmetInstall
