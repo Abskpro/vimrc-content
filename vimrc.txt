@@ -1,0 +1,133 @@
+call plug#begin('~/.vim/plugged')
+Plug 'Valloric/YouCompleteMe'
+Plug 'Yggdroot/indentLine'
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
+Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css']  }
+Plug 'wikitopian/hardmode'
+Plug 'digitaltoad/vim-pug'
+Plug 'moll/vim-node'
+ 
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'dense-analysis/ale'
+Plug 'tpope/vim-commentary'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'altercation/vim-colors-solarized'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'tpope/vim-surround'
+Plug 'jesseleite/vim-noh'
+Plug 'junegunn/goyo.vim'
+Plug 'mileszs/ack.vim'
+Plug 'ervandew/supertab'
+
+call plug#end()
+
+syntax enable
+set nocompatible
+syntax on
+" filetype plugin indent on
+filetype plugin on
+set encoding=UTF-8
+" set cursorline
+" set ruler
+set smartindent
+set mouse=c
+
+
+
+let g:ycm_use_clangd = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+    
+    set foldmethod=indent
+    set syntax=javaScript
+    set foldlevelstart=1
+    let javaScript_fold=1         " JavaScript
+    let php_folding=1             " PHP
+    let sh_fold_enabled=1         " sh
+    let vimsyn_folding='af'       " Vim script
+    let xml_syntax_folding=1      " XML
+    set foldnestmax=2
+
+    imap jj <ESC>
+	imap <Capslock> <c>
+    set tabstop=4
+    set relativenumber
+    set number
+    set showmatch
+    set showcmd
+	set cursorline
+    set noswapfile
+    set shell
+    set ft=jade
+
+    syntax on
+    let g:indentLine_color_term = 239
+    let g:indentLine_char_list = ['|', '|', '?', '?']
+    let g:indentLine_concealcursor = 'inc'
+    let g:indentLine_conceallevel = 2
+    let g:indentLine_enabled = 0
+    "" for eslint (ALE)
+    let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+    let g:ale_sign_warning = '.'
+    let g:ale_sign_errore_lint_on_enter = 0 " Less distracting when opening a new file
+    let b:ale_fixers = ['prettier', 'eslint']
+    let g:ale_fix_on_save = 1
+    let g:ale_completion_enabled = 1
+    "" for js
+    let g:javascript_plugin_jsdoc = 1
+    let g:javascript_plugin_ngdoc = 1
+    let g:javascript_plugin_flow = 1
+    let g:ale_linters = {
+                \  'javascript': ['eslint'],
+                \}
+    "" for html
+    " iabbrev </ </<C-X><C-O>
+	"" emmet config
+    autocmd FileType html,css EmmetInstall
+    let g:user_emmet_install_global = 0
+    let g:user_emmet_leader_key=','
+    let g:user_emmet_settings = {
+    \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+    \}
+    autocmd FileType html,css,javascript.jsx EmmetInstall
+    
+
+	"" Nerd trree
+	nnoremap <C-e> :NERDTreeToggle<CR>
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	let g:NERDTreeDirArrowExpandable = '▸'
+	let g:NERDTreeDirArrowCollapsible = '▾'
+    let g:NERDTreeWinPos = "right"
+    let g:NERDTreeQuitOnOpen = 1
+
+    ""Indent line
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+    let g:indentLine_enabled = 1
+    
+    ""CtrlP
+    imap <F1> <c-p> 
+    let g:ctrlp_working_path_mode = 'ra'
+
+    ""jsx
+    let g:jsx_ext_required = 1
+
+set runtimepath+=~/.vim_runtime
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
+
+
