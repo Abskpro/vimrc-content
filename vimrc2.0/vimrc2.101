@@ -1,0 +1,244 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'Yggdroot/indentLine'
+Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css']  }
+Plug 'wikitopian/hardmode'
+Plug 'digitaltoad/vim-pug'
+Plug 'moll/vim-node'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop'   } 
+Plug 'mbbill/undotree'
+Plug 'prettier/vim-prettier', { 'do': 'npm install'  }
+Plug 'lifepillar/vim-mucomplete'
+Plug 'leafgarland/typescript-vim'
+
+
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'dense-analysis/ale'
+Plug 'tpope/vim-commentary'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'altercation/vim-colors-solarized'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'tpope/vim-surround'
+Plug 'jesseleite/vim-noh'
+Plug 'mileszs/ack.vim'
+Plug 'ervandew/supertab'
+Plug 'ycm-core/YouCompleteMe'
+
+
+call plug#end()
+
+syntax enable
+set nocompatible
+syntax on
+" filetype plugin indent on
+filetype plugin on
+set encoding=UTF-8
+" set cursorline
+" set ruler
+set smartindent
+set mouse=c
+
+
+" let g:ycm_use_clangd = 0
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+    
+    set foldmethod=indent
+    set syntax=javaScript
+    set foldlevelstart=1
+    let javaScript_fold=1         " JavaScript
+    let php_folding=1             " PHP
+    let sh_fold_enabled=1         " sh
+    let vimsyn_folding='af'       " Vim script
+    let xml_syntax_folding=1      " XML
+    set foldnestmax=2
+
+    imap jj <ESC>
+	imap <Capslock> <c>
+    set tabstop=4
+    set relativenumber
+    set number
+    set showmatch
+    set showcmd
+	set cursorline
+    set noswapfile
+    set shell
+    set ft=jade
+    set timeoutlen=1000
+    set ttimeoutlen=0
+    cnoreabbrev W w
+    cnoreabbrev Q q
+    cnoreabbrev WQ wq
+
+    let g:go_fmt_experimental = 1
+
+    syntax on
+    let g:indentLine_color_term = 239
+    let g:indentLine_char_list = ['|', '|', '?', '?']
+    let g:indentLine_concealcursor = 'inc'
+    let g:indentLine_conceallevel = 2
+    let g:indentLine_enabled = 0
+    "" for eslint (ALE)
+    let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+    let g:ale_sign_warning = '.'
+    let g:ale_sign_errore_lint_on_enter = 0 " Less distracting when opening a new file
+    let b:ale_fixers = ['prettier', 'eslint']
+    let g:ale_fix_on_save = 1
+    let g:ale_completion_enabled = 1
+    let g:ale_completion_tsserver_autoimport = 1
+    "" for js
+    let g:javascript_plugin_jsdoc = 1
+    let g:javascript_plugin_ngdoc = 1
+    let g:javascript_plugin_flow = 1
+    let g:ale_linters = {
+                \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+                \  'javascript': ['eslint'],
+                \}
+    "" for html
+    " iabbrev </ </<C-X><C-O>
+	"" emmet config
+    autocmd FileType html,css,javascript.js,javascript.jsx EmmetInstall
+    " autocmd FileType javascript set filetype:javascript.jsx 
+    let g:user_emmet_install_global = 0
+    let g:user_emmet_leader_key=','
+    let g:user_emmet_settings = {
+    \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+    \ 'typescript':{
+    \   'extends':'jsx',
+    \   },
+    \}
+    
+
+	"" Nerd trree
+	nnoremap <C-e> :NERDTreeToggle<CR>
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	let g:NERDTreeDirArrowExpandable = '▸'
+	let g:NERDTreeDirArrowCollapsible = '▾'
+    let g:NERDTreeWinPos = "right"
+    let g:NERDTreeQuitOnOpen = 1
+
+    ""Indent line
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+    let g:indentLine_enabled = 1
+    
+    ""CtrlP
+    imap <F1> <c-p> 
+    let g:ctrlp_working_path_mode = 'ra'
+
+    ""jsx
+    let g:jsx_ext_required = 1
+
+
+
+
+
+    let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+        let g:ale_sign_warning = '.'
+            let g:ale_sign_errore_lint_on_enter = 0 " Less distracting when opening a new file
+                let b:ale_fixers = ['prettier', 'eslint']
+                    let g:ale_fix_on_save = 1
+                        let g:ale_completion_enabled = 1
+                            let g:ale_set_highlights = 0
+                        let g:airline#extensions#ale#enabled = 1
+
+                    let g:javascript_plugin_jsdoc = 1
+                    let g:javascript_plugin_ngdoc = 1
+                    let g:javascript_plugin_flow = 1
+                let g:ale_linters = {
+                                    \  'javascript': ['eslint'],
+                                    \  'python': ['pycodestyle']
+                                    \}
+    "" for html
+    " iabbrev </ </<C-X><C-O>
+"   "" emmet config
+            autocmd FileType html,css,EmmetInstall
+            let g:user_emmet_install_global = 0
+            let g:user_emmet_leader_key=','
+            let g:user_emmet_settings = {
+                                        \  'javascript.jsx' : {
+                                        \      'extends' : 'jsx'
+                                        \},
+                                    \}
+    autocmd FileType html,css,javascript.jsx EmmetInstall
+            "indent line
+   let g:indentLine_color_term = 239
+    let g:indentLine_char_list = ['|', '|', '?', '?']
+    let g:indentLine_concealcursor = 'inc'
+    let g:indentLine_conceallevel = 2
+    let g:indentLine_enabled = 0
+    "
+    ""python-mode
+    let g:pymode_python = 'python3'"
+                                                                                                   
+" undo tree
+if has("persistent_undo")
+    set undodir=$HOME."/.undodir"
+        set undofile
+    endif
+
+let g:prettier#autoformat = 1
+
+
+"YCM Completion
+"for java
+let g:syntastic_java_checkers = []
+let g:EclimFileTypeValidate = 0
+
+"for javascript
+
+
+"typescript
+let g:typescript_indent_disable=1
+setlocal indentkeys+=0
+let g:typescript_opfirst='\%([<>=,?^%|*/&]\|\([-:+]\)\1\@!\|!=\|in\%(stanceof\)\=\>\)''))'
+
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+
+"for proper vim scrolling based on 25 % of screen height
+
+
+function! ScrollQuarter(move)
+    let height=winheight(0)
+
+        if a:move == 'up'
+            let key="\<C-Y>"
+        else
+            let key="\<C-E>"
+        endif
+
+        execute 'normal! ' . height/4 . key
+        endfunction
+
+        nnoremap <silent> <C-u> :call ScrollQuarter('up')<CR>
+        nnoremap <silent> <C-d> :call ScrollQuarter('down')<CR>
+
+
+set runtimepath+=~/.vim_runtime
+
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
+
+
